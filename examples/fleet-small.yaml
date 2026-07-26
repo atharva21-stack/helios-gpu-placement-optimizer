@@ -1,0 +1,67 @@
+regions:
+  - id: us-central
+    name: US Central
+clusters:
+  - id: h100-prod
+    name: H100 Production
+    region_id: us-central
+    network_fabric: infiniband
+    storage_tier: nvme
+    status: active
+racks:
+  - id: rack-a
+    cluster_id: h100-prod
+    failure_domain: fd-a
+    network_domain: ib-main
+    power_domain: power-a
+  - id: rack-b
+    cluster_id: h100-prod
+    failure_domain: fd-b
+    network_domain: ib-main
+    power_domain: power-b
+nodes:
+  - id: h100-a-01
+    cluster_id: h100-prod
+    rack_id: rack-a
+    accelerator_class: H100_80GB
+    gpu_count: 8
+    hbm_per_gpu_gb: 80
+    cpu_cores: 192
+    system_memory_gb: 2048
+    local_storage_tb: 15
+    nvlink_domain: nv-a-01
+    nvswitch_domain: nvs-a-01
+    infiniband_domain: ib-main
+    network_bandwidth_gbps: 400
+    health_status: healthy
+    maintenance_status: available
+  - id: h100-a-02
+    cluster_id: h100-prod
+    rack_id: rack-a
+    accelerator_class: H100_80GB
+    gpu_count: 8
+    hbm_per_gpu_gb: 80
+    cpu_cores: 192
+    system_memory_gb: 2048
+    local_storage_tb: 15
+    nvlink_domain: nv-a-02
+    nvswitch_domain: nvs-a-02
+    infiniband_domain: ib-main
+    network_bandwidth_gbps: 400
+    health_status: healthy
+    maintenance_status: available
+  - id: h100-b-01
+    cluster_id: h100-prod
+    rack_id: rack-b
+    accelerator_class: H100_80GB
+    gpu_count: 8
+    hbm_per_gpu_gb: 80
+    cpu_cores: 192
+    system_memory_gb: 2048
+    local_storage_tb: 15
+    nvlink_domain: nv-b-01
+    nvswitch_domain: nvs-b-01
+    infiniband_domain: ib-main
+    network_bandwidth_gbps: 400
+    health_status: healthy
+    maintenance_status: available

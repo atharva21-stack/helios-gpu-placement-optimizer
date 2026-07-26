@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "helios-simulator"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["helios-optimizer"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["helios_simulator"]

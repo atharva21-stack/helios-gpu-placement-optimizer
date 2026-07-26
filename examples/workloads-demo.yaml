@@ -1,0 +1,31 @@
+workloads:
+  - id: llama70b-prod
+    name: Llama 70B Production
+    tenant_id: finance
+    project_id: agent-platform
+    workload_type: inference
+    priority: 90
+    accelerator_class: H100_80GB
+    gpu_count: 16
+    gpus_per_node: 8
+    node_count: 2
+    hbm_required_per_gpu_gb: 72
+    start_time: 2026-08-01T00:00:00Z
+    end_time: 2026-09-01T00:00:00Z
+    infiniband_required: true
+    rack_local_required: true
+    tenant_isolation: dedicated
+    preemptible: false
+  - id: embeddings-batch
+    name: Embeddings Batch
+    tenant_id: search
+    workload_type: embeddings
+    priority: 40
+    accelerator_class: H100_80GB
+    gpu_count: 4
+    gpus_per_node: 4
+    node_count: 1
+    hbm_required_per_gpu_gb: 40
+    start_time: 2026-08-02T00:00:00Z
+    end_time: 2026-08-03T00:00:00Z
+    preemptible: true

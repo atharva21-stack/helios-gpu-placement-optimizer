@@ -1,0 +1,11 @@
+import { Badge, PageHeader } from "@/components/ui";
+import { runs } from "@/lib/demo-data";
+
+export default function PlacementPage() {
+  return <div className="page"><PageHeader eyebrow="Optimizer" title="Placement runs" description="Generate explainable, topology-aware plans and compare scheduling strategies." action="Run optimizer"/>
+    <section className="placementHero"><article className="panel configCard"><span className="eyebrow">New plan</span><h2>Optimize the current queue</h2><p>Place 26 pending and active workloads against a point-in-time fleet snapshot.</p><label>Strategy<select defaultValue="topology"><option value="topology">Topology-aware heuristic</option><option>Best fit</option><option>First fit</option><option>CP-SAT · balanced</option></select></label><div className="configRow"><span><strong>26</strong>Workloads</span><span><strong>632</strong>Healthy GPUs</span><span><strong>4</strong>Clusters</span></div><button className="primaryButton wide">Run placement</button></article>
+      <article className="panel explanationCard"><span className="eyebrow">Why this strategy</span><h2>Fast, local, explainable</h2><div className="reason"><b>01</b><div><strong>Preserves contiguous blocks</strong><p>Avoids splitting fully free eight-GPU nodes.</p></div></div><div className="reason"><b>02</b><div><strong>Keeps fabrics local</strong><p>Prefers one NVSwitch, rack, or InfiniBand domain.</p></div></div><div className="reason"><b>03</b><div><strong>Returns clear tradeoffs</strong><p>Every placement includes scored reasons and capacity impact.</p></div></div></article>
+    </section>
+    <article className="panel"><div className="panelHead"><div><span className="eyebrow">History</span><h2>Recent placement runs</h2></div></div><div className="tableWrap"><table><thead><tr><th>Run</th><th>Strategy</th><th>Accepted</th><th>Utilization</th><th>Fragmented</th><th>Runtime</th><th>Status</th></tr></thead><tbody>{runs.map(r=><tr key={r.id}><td><strong>{r.id}</strong></td><td>{r.strategy}</td><td>{r.accepted}</td><td>{r.utilization}</td><td>{r.fragmented}</td><td>{r.runtime}</td><td><Badge tone="success">{r.status}</Badge></td></tr>)}</tbody></table></div></article>
+  </div>;
+}
